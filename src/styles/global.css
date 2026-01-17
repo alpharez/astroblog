@@ -342,7 +342,7 @@ summary {
   display: none;
 }
 
-/* CSS Custom Properties Definitions - Minimal Hacker Theme */
+/* CSS Custom Properties Definitions - Dark Terminal Theme */
 
 :root {
   --maxWidth-none: "none";
@@ -371,7 +371,7 @@ summary {
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  
+
   /* Typography */
   --fontFamily-mono: "SF Mono", Monaco, "Roboto Mono", Consolas, "Courier New", monospace;
   --fontFamily-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -386,7 +386,7 @@ summary {
   --lineHeight-tight: 1.2;
   --lineHeight-normal: 1.6;
   --lineHeight-relaxed: 1.8;
-  
+
   /* 1.250 Major Third Type Scale */
   --fontSize-0: 0.8rem;
   --fontSize-1: 1rem;
@@ -396,29 +396,35 @@ summary {
   --fontSize-5: 2.441rem;
   --fontSize-6: 3.052rem;
   --fontSize-7: 3.815rem;
-  
-  /* Minimal Hacker Color Palette */
-  --color-terminal-green: #4a9;
-  --color-muted-blue: #6b9bd1;
-  --color-subtle-gray: #666;
-  
-  --color-background: #0d1117;
-  --color-background-secondary: #161b22;
-  --color-background-tertiary: #21262d;
-  --color-border: #30363d;
-  --color-border-bright: #484f58;
-  
-  --color-primary: var(--color-terminal-green);
-  --color-secondary: var(--color-muted-blue);
+
+  /* Dark Terminal Color Palette */
+  --color-background: #0a0e14;
+  --color-background-secondary: #0f1419;
+  --color-background-tertiary: #1a1f26;
+  --color-border: #2d353d;
+  --color-border-bright: #3d4752;
+
+  /* Primary: Bright green for links and emphasis (WCAG AA on dark bg) */
+  --color-primary: #39d353;
+  /* Secondary: Softer cyan for hover states */
+  --color-secondary: #58a6ff;
+  /* Accent: Used for decorative elements */
   --color-accent: #8b949e;
-  
-  --color-text: #e6edf3;
-  --color-text-secondary: #8b949e;
-  --color-text-muted: #6e7681;
-  --color-text-light: #7c3aed;
+
+  /* Text colors with good contrast ratios */
+  --color-text: #c9d1d9;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
   --color-heading: #f0f6fc;
-  
-  /* Minimal Effects */
+
+  /* Syntax highlighting */
+  --color-syntax-keyword: #ff7b72;
+  --color-syntax-string: #a5d6ff;
+  --color-syntax-function: #d2a8ff;
+  --color-syntax-variable: #ffa657;
+  --color-syntax-comment: #6b7280;
+
+  /* Effects */
   --transition-fast: 0.15s ease;
   --transition-medium: 0.2s ease;
 }
@@ -809,7 +815,7 @@ pre code {
 .gatsby-highlight .token.prolog,
 .gatsby-highlight .token.doctype,
 .gatsby-highlight .token.cdata {
-  color: var(--color-text-muted);
+  color: var(--color-syntax-comment);
   font-style: italic;
 }
 
@@ -843,18 +849,18 @@ pre code {
 .gatsby-highlight .token.atrule,
 .gatsby-highlight .token.attr-value,
 .gatsby-highlight .token.keyword {
-  color: #ff7b72;
+  color: var(--color-syntax-keyword);
 }
 
 .gatsby-highlight .token.function,
 .gatsby-highlight .token.class-name {
-  color: #d2a8ff;
+  color: var(--color-syntax-function);
 }
 
 .gatsby-highlight .token.regex,
 .gatsby-highlight .token.important,
 .gatsby-highlight .token.variable {
-  color: #ffa657;
+  color: var(--color-syntax-variable);
 }
 
 /* Ensure clean rendering */
