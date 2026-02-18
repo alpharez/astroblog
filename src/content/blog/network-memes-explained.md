@@ -94,7 +94,7 @@ The pie chart doesn't lie: when you finally find root cause, it's DNS about 99.7
 
 ## Have You Been Exposed to IPv6 at Work?
 
-![Fake lawyer ad - Have you been exposed to an IPv6 address at work? Stahp, Hecks and Natt - 1-888-STOP-HEX](./meme-ipv6-lawyer.png)
+![Fake lawyer ad - Have you been exposed to an IPv6 address at work? Stahp, Hecks and Natt - 1-888-STOP-HEX](./meme-ipv6-lawyer.jpg)
 
 IPv6 has been "the future of networking" since 1998. It's 2026 and most of us are still clinging to IPv4 like it's a life raft, NATting everything in sight and pretending the address exhaustion problem isn't real.
 
@@ -133,7 +133,7 @@ But you can't say that out loud because your company just signed a five-year E5 
 
 ## Vendor Documentation: A Horror Story
 
-![Kid reading SR OS for Kids book, then crying in shopping cart](./meme-sros-for-kids.png)
+![Kid reading SR OS for Kids book, then crying in shopping cart](./meme-sros-for-kids.jpg)
 
 Every network engineer remembers the moment they cracked open their first vendor documentation. You thought it would be approachable. Maybe even educational. Then you opened the Nokia SR OS CLI reference and realized it's 4,000 pages of commands that all look the same, written by someone who clearly hates you.
 
