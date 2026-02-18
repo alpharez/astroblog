@@ -92,6 +92,45 @@ The pie chart doesn't lie: when you finally find root cause, it's DNS about 99.7
 
 **The lesson:** When in doubt, flush the cache. When not in doubt, flush the cache anyway.
 
+## Have You Been Exposed to IPv6 at Work?
+
+![Fake lawyer ad - Have you been exposed to an IPv6 address at work? Stahp, Hecks and Natt - 1-888-STOP-HEX](./meme-ipv6-lawyer.png)
+
+IPv6 has been "the future of networking" since 1998. It's 2026 and most of us are still clinging to IPv4 like it's a life raft, NATting everything in sight and pretending the address exhaustion problem isn't real.
+
+Then one day, you're minding your own business and someone drops a `2001:db8:a1ab:34ac:67ab:4af3:49a:5bb3/64` into a ticket. Your eye twitches. Your hands start shaking. You develop what the law firm of Stahp, Hecks & Natt calls "HEX rage."
+
+Know the symptoms:
+
+- **Number & letter anxiety** — Is that an `a` or a `4`? Is that hex or did someone have a stroke on the keyboard?
+- **NAT44 cravings** — "What if we just... NAT it again? Double NAT never hurt anyone, right?"
+- **Dotted decimal ranting** — "Four octets! That's all we need! Four beautiful, predictable octets!"
+- **DNS avoidance** — Because AAAA records are four times worse than A records
+
+The truth is, IPv6 is technically superior in every way. It's also an absolute nightmare to read, type, troubleshoot, or explain to management. You try telling a VP that `fe80::1` is a link-local address and watch their eyes glaze over faster than during your last budget presentation.
+
+We've been "transitioning" to IPv6 for almost three decades now. At this rate, we'll achieve full adoption roughly around the heat death of the universe. Until then: 1-888-STOP-HEX. Operators are standing by.
+
+**The lesson:** IPv6 is inevitable. Your suffering is also inevitable. These are related.
+
+## Layer 8 & the Tools We Endure
+
+![It's a layer 8 problem](./meme-layer8.webp)
+
+The OSI model has seven layers. Physical, data link, network, transport, session, presentation, application. Memorized it for your CCNA, forgot it immediately, relearned it for your next cert. But experienced engineers know there's a secret eighth layer: **the user**.
+
+Layer 8 problems can't be solved with configuration. You can't `no shut` a person. You can't apply a QoS policy to someone's decision-making. Layer 8 is the coworker who plugs a switch into itself and creates a broadcast storm. It's the manager who approves a firewall rule that opens port 22 to the internet "just for testing." It's you, at 3 AM, fat-fingering a subnet mask.
+
+And then there are the tools they make us use.
+
+![Signs of a stroke - incoherent speech: I love Microsoft Teams](./meme-teams-stroke.jpg)
+
+Every enterprise network engineer has a love-hate relationship with their collaboration tools — emphasis on hate. Microsoft Teams consumes bandwidth like a black hole, drops calls at the worst possible moments, and somehow manages to be both bloated and missing basic features simultaneously.
+
+But you can't say that out loud because your company just signed a five-year E5 license agreement. So you smile, unmute yourself for the third time because Teams muted you again, and type "can everyone see my screen?" into a void that may or may not be connected.
+
+**The lesson:** The network is almost never the problem. But the people using it? That's a different story. And the tools those people force you to use? That's the real tragedy.
+
 ## Vendor Documentation: A Horror Story
 
 ![Kid reading SR OS for Kids book, then crying in shopping cart](./meme-sros-for-kids.png)
@@ -115,6 +154,8 @@ The real skill in network engineering isn't configuring routers. It's knowing wh
 Network engineers meme because the alternative is screaming into the void at 2 AM while waiting for a TAC callback. These jokes aren't just funny — they're shared trauma, compressed into image macros. Every network engineer who sees the distracted boyfriend meme doesn't just laugh. They *remember*. They remember the time they made that quick fix. They remember the outage. They remember the post-mortem.
 
 Memes are our oral tradition. They pass down wisdom that no Cisco Press book could capture: *don't touch production on Fridays, always check the change calendar, and never trust anyone who says "it's just a small change."*
+
+![Network engineers after proving it's not the network](./meme-proved-not-network.png)
 
 Now if you'll excuse me, I need to go check why OSPF adjacencies are flapping. Someone probably "didn't change anything."
 
