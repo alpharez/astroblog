@@ -92,6 +92,24 @@ The pie chart doesn't lie: when you finally find root cause, it's DNS about 99.7
 
 **The lesson:** When in doubt, flush the cache. When not in doubt, flush the cache anyway.
 
+## Vendor Documentation: A Horror Story
+
+![Kid reading SR OS for Kids book, then crying in shopping cart](./meme-sros-for-kids.png)
+
+Every network engineer remembers the moment they cracked open their first vendor documentation. You thought it would be approachable. Maybe even educational. Then you opened the Nokia SR OS CLI reference and realized it's 4,000 pages of commands that all look the same, written by someone who clearly hates you.
+
+The three stages of vendor documentation:
+
+1. **Optimism** — "Oh cool, let me just look up how to configure this."
+2. **Confusion** — "Wait, why are there seven different ways to do this and none of them match the version I'm running?"
+3. **Defeat** — *crying in shopping cart*
+
+And it's not just Nokia. Cisco's configuration guides have more volumes than *Game of Thrones*. Juniper's documentation assumes you already know Juniper. Fortinet's docs are actually pretty good — which is suspicious and makes you trust them less.
+
+The real skill in network engineering isn't configuring routers. It's knowing which page of a 6,000-page PDF has the one command you need, and accepting that the example config will never match your environment.
+
+**The lesson:** If the documentation makes sense on the first read, you're reading the wrong documentation.
+
 ## Why We Meme
 
 Network engineers meme because the alternative is screaming into the void at 2 AM while waiting for a TAC callback. These jokes aren't just funny — they're shared trauma, compressed into image macros. Every network engineer who sees the distracted boyfriend meme doesn't just laugh. They *remember*. They remember the time they made that quick fix. They remember the outage. They remember the post-mortem.
