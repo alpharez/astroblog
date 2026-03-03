@@ -1,7 +1,7 @@
 ---
-description: A short recap of yesterday’s Claude outage and the lesson it drove home: don’t bet your workflow on a single AI.
+description: "A short recap of yesterday’s Claude outage and the lesson it drove home: don’t bet your workflow on a single AI."
 pubDate: '2026-03-03'
-title: Claude Outage Recap — and the Case for Redundant AI Options
+title: "Claude Outage Recap — and the Case for Redundant AI Options"
 ---
 
 Yesterday was a reminder that we’re still in the early days of AI-as-infrastructure.
