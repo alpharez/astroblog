@@ -1,15 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
+import { AUTHOR_NAME, AUTHOR_SUMMARY, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const [featuredPost, ...archivePosts] = posts;
 ---
 
 <!doctype html>
@@ -17,75 +19,250 @@ const posts = (await getCollection('blog')).sort(
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
-			main {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: 0 auto;
-				padding: 1em;
+			.landing {
+				padding: 2rem 0 4rem;
 			}
-			ul {
-				display: flex;
-				flex-direction: column;
-				gap: 1.5rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
+
+			.hero {
+				display: grid;
+				grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.85fr);
+				gap: 1.25rem;
+				align-items: stretch;
+				margin-bottom: 1.5rem;
 			}
-			ul li {
-				border-bottom: 1px solid var(--color-border);
-				padding-bottom: 1.5rem;
+
+			.hero-copy,
+			.hero-notes,
+			.featured-card,
+			.post-card {
+				border: 1px solid rgba(20, 25, 34, 0.08);
+				border-radius: var(--radius-lg);
+				background: var(--color-surface);
+				backdrop-filter: blur(18px);
+				box-shadow: var(--shadow-soft);
 			}
-			ul li:last-child {
-				border-bottom: none;
+
+			.hero-copy {
+				padding: clamp(1.4rem, 4vw, 3.2rem);
 			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
+
+			.hero-copy h1 {
+				max-width: 13ch;
+				margin-bottom: 1rem;
 			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-				width: 100%;
+
+			.hero-notes {
+				display: grid;
+				gap: 1rem;
+				padding: 1.4rem;
+				align-content: start;
 			}
-			ul li a {
+
+			.note-list {
+				display: grid;
+				gap: 0.9rem;
+			}
+
+			.note-item strong {
 				display: block;
+				font-family: var(--font-display);
+				font-size: 1.05rem;
+				margin-bottom: 0.2rem;
 			}
-			.title {
-				margin: 0 0 0.5rem 0;
-				color: var(--color-primary);
-				line-height: 1.3;
-			}
-			.date {
+
+			.note-item p,
+			.section-intro,
+			.archive-copy {
 				margin: 0;
-				color: var(--color-text-muted);
+				color: var(--color-ink-soft);
 			}
-			ul li a:hover .title {
-				color: var(--color-secondary);
+
+			.featured {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem);
+				gap: 1.25rem;
+				margin-bottom: 1.5rem;
+			}
+
+			.featured-card {
+				display: grid;
+				grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 1fr);
+				gap: 1.2rem;
+				padding: 1.2rem;
+				text-decoration: none;
+			}
+
+			.featured-card:hover,
+			.post-card:hover {
+				transform: translateY(-2px);
+			}
+
+			.featured-copy {
+				display: grid;
+				gap: 0.8rem;
+				align-content: start;
+			}
+
+			.featured-copy h2,
+			.post-card h3 {
+				margin: 0;
+			}
+
+			.featured-image,
+			.post-card img {
+				border-radius: calc(var(--radius-lg) - 8px);
+				overflow: hidden;
+				box-shadow: var(--shadow-card);
+			}
+
+			.archive-panel {
+				padding: 1.35rem;
+			}
+
+			.post-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1.25rem;
+			}
+
+			.post-card {
+				display: grid;
+				gap: 0.9rem;
+				padding: 1rem;
+				text-decoration: none;
+			}
+
+			.post-card .meta-row {
+				font-size: 0.84rem;
+			}
+
+			.post-card p {
+				margin: 0;
+				color: var(--color-ink-soft);
+			}
+
+			@media (max-width: 960px) {
+				.hero,
+				.featured,
+				.featured-card {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 720px) {
+				.landing {
+					padding-top: 1.2rem;
+				}
+
+				.post-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.hero-copy,
+				.hero-notes,
+				.archive-panel,
+				.featured-card,
+				.post-card {
+					padding: 1rem;
+				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
+		<main class="landing">
+			<div class="page-shell">
+				<section class="hero">
+					<div class="hero-copy">
+						<p class="eyebrow">{AUTHOR_NAME}</p>
+						<h1>Systems writing with an operator&rsquo;s bias.</h1>
+						<p class="lede">
+							{SITE_DESCRIPTION} Essays here stay practical: real failure modes, production
+							habits, and the tradeoffs behind good technical decisions.
+						</p>
+						<div class="button-row">
+							<a class="button-link primary" href="#latest">Read the latest</a>
+							<a class="button-link" href="/about">About Steve</a>
+						</div>
+					</div>
+					<aside class="hero-notes">
+						<p class="eyebrow">What you&rsquo;ll find</p>
+						<div class="note-list">
+							<div class="note-item">
+								<strong>Operations and networking</strong>
+								<p>Routing, interop, outages, and the details that make production messy.</p>
+							</div>
+							<div class="note-item">
+								<strong>Security and automation</strong>
+								<p>Defensive engineering, repeatable workflows, and pragmatic tooling.</p>
+							</div>
+							<div class="note-item">
+								<strong>AI and systems thinking</strong>
+								<p>{AUTHOR_SUMMARY}.</p>
+							</div>
+						</div>
+					</aside>
+				</section>
+
+				{
+					featuredPost && (
+						<section class="featured">
+							<a class="featured-card" href={`/blog/${featuredPost.id}/`}>
+								<div class="featured-copy">
+									<p class="eyebrow">Latest essay</p>
+									<h2>{featuredPost.data.title}</h2>
+									<p class="section-intro">{featuredPost.data.description}</p>
+									<div class="meta-row">
+										<span>
+											<FormattedDate date={featuredPost.data.pubDate} />
+										</span>
+										<span>Full article</span>
+									</div>
+								</div>
+								{featuredPost.data.heroImage && (
+									<div class="featured-image">
+										<Image
+											width={960}
+											height={640}
+											src={featuredPost.data.heroImage}
+											alt=""
+										/>
+									</div>
+								)}
+							</a>
+							<div class="archive-panel surface-panel">
+								<p class="eyebrow">Editorial note</p>
+								<p class="archive-copy">
+									This site favors durable technical writing over feed churn. If a post is here,
+									it is meant to be useful after the hype cycle ends.
+								</p>
+							</div>
+						</section>
+					)
+				}
+
+				<section id="latest">
+					<p class="eyebrow">Archive</p>
+					<div class="post-grid">
+						{
+							archivePosts.map((post) => (
+								<a class="post-card" href={`/blog/${post.id}/`}>
 									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+										<Image width={720} height={420} src={post.data.heroImage} alt="" />
 									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+									<div class="meta-row">
+										<span>
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+									</div>
+									<h3>{post.data.title}</h3>
+									<p>{post.data.description}</p>
 								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
+							))
+						}
+					</div>
+				</section>
+			</div>
 		</main>
 		<Footer />
 	</body>
