@@ -24,26 +24,9 @@ const [featuredPost, ...archivePosts] = posts;
 			}
 
 			.hero {
-				display: grid;
-				grid-template-columns: minmax(0, 1.5fr) minmax(18rem, 0.85fr);
-				gap: 1.25rem;
-				align-items: stretch;
-				margin-bottom: 1.5rem;
-			}
-
-			.hero-copy,
-			.hero-notes,
-			.featured-card,
-			.post-card {
-				border: 1px solid rgba(20, 25, 34, 0.08);
-				border-radius: var(--radius-lg);
-				background: var(--color-surface);
-				backdrop-filter: blur(18px);
-				box-shadow: var(--shadow-soft);
-			}
-
-			.hero-copy {
-				padding: clamp(1.4rem, 4vw, 3.2rem);
+				padding-bottom: 2rem;
+				border-bottom: 1px solid var(--color-line);
+				margin-bottom: 2rem;
 			}
 
 			.hero-copy h1 {
@@ -53,9 +36,8 @@ const [featuredPost, ...archivePosts] = posts;
 
 			.hero-notes {
 				display: grid;
-				gap: 1rem;
-				padding: 1.4rem;
-				align-content: start;
+				gap: 0.85rem;
+				margin-top: 1.5rem;
 			}
 
 			.note-list {
@@ -78,23 +60,15 @@ const [featuredPost, ...archivePosts] = posts;
 			}
 
 			.featured {
-				display: grid;
-				grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem);
-				gap: 1.25rem;
-				margin-bottom: 1.5rem;
+				margin-bottom: 2rem;
+				padding-bottom: 2rem;
+				border-bottom: 1px solid var(--color-line);
 			}
 
 			.featured-card {
 				display: grid;
-				grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 1fr);
-				gap: 1.2rem;
-				padding: 1.2rem;
+				gap: 1rem;
 				text-decoration: none;
-			}
-
-			.featured-card:hover,
-			.post-card:hover {
-				transform: translateY(-2px);
 			}
 
 			.featured-copy {
@@ -110,25 +84,24 @@ const [featuredPost, ...archivePosts] = posts;
 
 			.featured-image,
 			.post-card img {
-				border-radius: calc(var(--radius-lg) - 8px);
 				overflow: hidden;
-				box-shadow: var(--shadow-card);
 			}
 
 			.archive-panel {
-				padding: 1.35rem;
+				margin-top: 1.2rem;
 			}
 
 			.post-grid {
 				display: grid;
-				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 1.25rem;
+				grid-template-columns: 1fr;
+				gap: 0;
 			}
 
 			.post-card {
 				display: grid;
 				gap: 0.9rem;
-				padding: 1rem;
+				padding: 1.4rem 0;
+				border-top: 1px solid var(--color-line);
 				text-decoration: none;
 			}
 
@@ -141,12 +114,9 @@ const [featuredPost, ...archivePosts] = posts;
 				color: var(--color-ink-soft);
 			}
 
-			@media (max-width: 960px) {
-				.hero,
-				.featured,
-				.featured-card {
-					grid-template-columns: 1fr;
-				}
+			.post-card:hover h3,
+			.featured-card:hover h2 {
+				color: var(--color-accent-strong);
 			}
 
 			@media (max-width: 720px) {
@@ -154,16 +124,14 @@ const [featuredPost, ...archivePosts] = posts;
 					padding-top: 1.2rem;
 				}
 
-				.post-grid {
-					grid-template-columns: 1fr;
+				.hero {
+					margin-bottom: 1.5rem;
+					padding-bottom: 1.5rem;
 				}
 
-				.hero-copy,
-				.hero-notes,
-				.archive-panel,
-				.featured-card,
-				.post-card {
-					padding: 1rem;
+				.featured {
+					margin-bottom: 1.5rem;
+					padding-bottom: 1.5rem;
 				}
 			}
 		</style>

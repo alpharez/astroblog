@@ -18,13 +18,13 @@ const { github, linkedin } = SOCIAL_LINKS;
 
 			.about-grid {
 				display: grid;
-				grid-template-columns: minmax(0, 1.3fr) minmax(18rem, 0.85fr);
-				gap: 1.25rem;
+				grid-template-columns: 1fr;
+				gap: 2rem;
 			}
 
 			.about-panel,
 			.about-sidebar {
-				padding: clamp(1.2rem, 3vw, 2rem);
+				padding: 0;
 			}
 
 			.about-panel p + p {
@@ -35,6 +35,8 @@ const { github, linkedin } = SOCIAL_LINKS;
 				display: grid;
 				gap: 1rem;
 				align-content: start;
+				padding-top: 1.4rem;
+				border-top: 1px solid var(--color-line);
 			}
 
 			.focus-list {
@@ -44,12 +46,6 @@ const { github, linkedin } = SOCIAL_LINKS;
 
 			.focus-list li + li {
 				margin-top: 0.65rem;
-			}
-
-			@media (max-width: 860px) {
-				.about-grid {
-					grid-template-columns: 1fr;
-				}
 			}
 
 			@media (max-width: 720px) {
