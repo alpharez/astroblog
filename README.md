@@ -1,62 +1,86 @@
-# Astro Starter Kit: Blog
+# steveclement.me
 
-```sh
-npm create astro@latest -- --template blog
+> Personal site and technical blog for Steve Clement, built with Astro 6.
+
+<p>
+  <a href="https://steveclement.me"><img alt="Live Site" src="https://img.shields.io/badge/live-steveclement.me-8ab4ff?style=for-the-badge"></a>
+  <a href="https://steveclement.me/rss.xml"><img alt="RSS Feed" src="https://img.shields.io/badge/rss-subscribe-77e4c8?style=for-the-badge"></a>
+  <a href="./src/content/blog"><img alt="Blog Content" src="https://img.shields.io/badge/content-markdown%2Fmdx-a7b1bd?style=for-the-badge"></a>
+  <a href="./package.json"><img alt="Astro 6" src="https://img.shields.io/badge/astro-6.0.4-c0d7ff?style=for-the-badge"></a>
+</p>
+
+The site focuses on networking, security, automation, AI, and systems writing. Content is authored in Markdown and MDX, rendered through Astro content collections, and published as a static site.
+
+## Quick Start
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Then open `http://localhost:4321`.
 
-Features:
+## Stack
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+- Astro 6
+- `@astrojs/mdx`
+- `@astrojs/rss`
+- `@astrojs/sitemap`
+- `sharp`
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
-├── public/
+.
+├── public/                 # Static files, fonts, favicon, redirects
 ├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
+│   ├── assets/             # Astro-managed images
+│   ├── components/         # Shared UI components
+│   ├── content/blog/       # Blog posts in .md and .mdx
+│   ├── layouts/            # Shared page layouts
+│   ├── pages/              # Route entrypoints
+│   ├── content.config.ts   # Content collection schema
+│   └── styles/global.css   # Global site styling
 ├── astro.config.mjs
-├── README.md
 ├── package.json
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Common Commands
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the local site at `http://localhost:4321` |
+| `npm run build` | Build the production site into `dist/` |
+| `npm run preview` | Serve the built output locally |
+| `npm run astro -- check` | Run Astro type and content validation |
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Writing Posts
 
-Any static assets, like images, can be placed in the `public/` directory.
+Add new posts in `src/content/blog/` using kebab-case filenames:
 
-## 🧞 Commands
+```text
+src/content/blog/my-new-post.md
+```
 
-All commands are run from the root of the project, from a terminal:
+Required frontmatter:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```yaml
+---
+title: "Post Title"
+description: "Short summary"
+pubDate: "2026-03-14"
+---
+```
 
-## 👀 Want to learn more?
+Optional fields:
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `updatedDate`
+- `heroImage`
 
-## Credit
+## Architecture Notes
 
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+- Site metadata lives in `src/consts.ts`
+- Blog post rendering uses `src/layouts/BlogPost.astro`
+- Collection validation lives in `src/content.config.ts`
+- RSS and sitemap output are generated during build
